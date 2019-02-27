@@ -1,4 +1,4 @@
-Sasshiato: a Java PDF and RTF rendering companion program for RRG
+Sasshiato: Java PDF and RTF rendering companion program for RRG
 -----------------------------------------------------------------
 
 Sasshiato can generate PDF and RTF files from XML outputs generated from SAS.
@@ -48,22 +48,22 @@ i.e. `someFolder/sasshiato`.
 Documentation
 -------------
 Here somewhat outdated but much more complete documents:
-* (SasshiatoCrashGuide)[]docs/SasshiatoCrashGuide.pdf]
-* (SasshiatoDocumentation)[docs/SasshiatoDocumentation.pdf]
+* [SasshiatoCrashGuide](docs/SasshiatoCrashGuide.pdf)
+* [SasshiatoDocumentation](docs/SasshiatoDocumentation.pdf)
 
 
 _The following notes are incomplete but can provide useful additional information:_ 
 
 Configuration
 -------------
-Default global configuration is defined in [sasshiato.props]()src/main/resources/sasshiato.props)
+Default global configuration is defined in (sasshiato.props)[src/main/resources/sasshiato.props].
 These can be changed/overridden in the input XML document
 using `<__sprops></__sprops>` tag in the `<__datatype>RINFO </__datatype>` record as a comma delimited name=value list.
 See example input XML in included `/test_inputs` folder.
 
 Requesting file generation
 --------------------------
-A Java property file similar to (run.props)[test_inputs/run.props]
+A Java property file similar to [run.props](test_inputs/run.props)
 needs to be passed to the sasshiato (see sasshiato.sh or sasshiato.bat).
 It contains input and output location info as well as optional watermark file.
 
@@ -91,6 +91,6 @@ Other -D parameters
 
 Input XML Spec
 --------------
-See work in progress doc (InputXmlNotes.md)[docs/InputXmlNotes.md]
+See work in progress doc [InputXmlNotes.md](docs/InputXmlNotes.md)
 
 
