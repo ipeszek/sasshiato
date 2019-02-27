@@ -1,0 +1,6 @@
+xml_in_file=./test_inputs/t_disp.xml
+out_dir=./test_outputs
+log2=file
+log2f=./test_outputs/t_disp.log
+log2lev=150
+watermark_file=none

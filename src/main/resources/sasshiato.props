@@ -1,0 +1,113 @@
+##-----------------------------------------------------##
+## Global sasshiato configuration                      ##
+## TODO requires more documentation                    ##
+##                                                     
+## This uses relatively consistent names, and documentation for
+## say, head can be often applied to, say, body       
+## See also com.btcisp.sasshiato.ReportLaF.java
+##-----------------------------------------------------##
+
+
+## name=sfoot/foot/head/shead/title/body
+## <name>_ff - font face can use bf, it, or bfit, nothing means normal face, e.g. header_ff=bf
+## <name>_ld - (def 1.2 times fontsize) leading, 
+ 
+#title_al - title align L/R/C center is default
+#title_ff=bfit
+ 
+#splitchars - string consisting of additional split characters, /-, and [SPACE] are always included.
+ 
+#col_sp - extra spacing between columns (def 12f)
+ 
+#headu_sp - def 2f head uderline spacing (open space between lines)
+ 
+#headu_use_d2next  def false (false/true) use distance to next in separating underline in header columns
+#head_ff=bf
+
+
+#super_rs - def 3f superscript raise
+
+#super_fs - def bodyfontsize-2 superscript font size
+
+#shead_pd - def 4f system header padding
+
+#sfoot_pd - def 0f system footer padding
+
+#body_pd - def 2d after body padding
+#body_ld=7
+#body_ff=
+
+#title_pd - def 4f after title padding
+
+#head_pd - def 4f header bottom padding
+
+#foot_pd - def 4f before footnote padding
+#foot_pos - def B (R/B) running or bottom position of footer
+#foot_pos=R
+#foot_ff=it
+#foot_ftsp=0
+
+#sfoot_ff=it
+ 
+#foot_ftsp - def 4f separation between FT footers, 4pts is always added to this value
+
+ 
+#esc_char - default to /, escape char for things like /tN, /i, /s#and /#, has to be a single char
+ 
+#rtfpl_<what> - hf <default>, t - place in rtf header/footer or as part of the table
+#             where <what> = shead, sfoot, foot
+ 
+rtfpl_shead=t
+rtfpl_sfoot=t
+rtfpl_foot=t
+
+#rtf_extlns - (def 2) extra lines used for PDF-RTF compatibility if systemHeaders are placed in table or footers/system
+##  footers are placed in table.
+ 
+#rtf_pgsepparfs - <int in twips (for font 8 use rtf_pgsepparfs=16),  def 0>, -1 removes the font size setting, font size for the top paragraph at the top of each page used when
+##                 hard page breaks are used or when extra pararagraph line is added at the page top. 
+
+#rtf_linesplit calc/hyphen - calculates soft line splits on breakable characters or inserts invisible hypenation points
+#rtf_pgsepparfs=-1
+#rtf_combinable - true/false def false - adds empty paragraph on the top of the page even if report is a single page, this is for reports with sys headers/footers placed intable only.
+#rtf_combinable=true
+#rtf_extlns=5
+ 
+#date_fmt defaulted to ddMMMyyyy HH:mm,  any format supported by java.text.SimpleDateFormat
+#data_fmt_uc  true/false defaulted to true, forces date to be upper case.
+ 
+#gen_size_info - simple/none
+ 
+#print_empty_headers = false(def)/true - enables/disables printing empty headers. 
+#print_empty_headers=true
+
+# stretch_tw - true/flase default true, controlls if text weighted stretching is applied to stretchable columns.
+stretch_tw=true
+
+#gen_size_info - simple/none (default none) generates file <__filename>_info.txt with sizing info
+#gen_size_info=simple
+
+#bseparator - f/t/n place bottom separator above footnotes or under table, n is for none
+#bseparator=f
+ 
+
+#esc_char - default to /, escape char for things like /tN, /i, /s# and /#, has to be a single char
+#esc_char=~
+
+#bookmarks_enabled = true(def)/false - disables bookmark functionality
+#bookmarks_enabled=false
+ 
+# body_ft_dec_cells - true(def)/false - decides if formatting such as use of /# or /s# or _DATE_, superscripts, etc, should be applied to text body cells of D or RD alignment.
+# title_tbsp - tabular title separation in points (defaulted to 30), similar to foot_ftsp used for footnotes (that one defaults to 4)
+ 
+ 
+##------------------------------------------------------------------------##
+### SHOULD NOT BE DEFINED GLOBALLY BUT CAN BE PASSED IN __sprops XML tag
+##------------------------------------------------------------------------##
+
+## appending documents
+##
+#append - true/false default false
+#appendable - true/false default false
+
+

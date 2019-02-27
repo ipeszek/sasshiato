@@ -1,0 +1,100 @@
+2009-10-11 Client Build
+
+2009-10-13 FIX: correct varbylab display to use title font face, not header font face.
+
+2009-11-10 FIX: trunkation with RD alignment. This manifests itself very rarely and font calculations 
+                indicate that there is enough space to fit, but last character of the text is sometimes 
+                ommited.
+2009-11-12 FIX: incorrect repeated text in first column on the top of the page. This manifests itself very 
+                rearly when keepn=1 is used. 
+                
+2009-12_06 FIX: changed conversion of float to twips, before floor of points was taken first, then multiplied by 20, 
+                new conversion first multiplies by 20, then converts to int.
+                
+2009-12-15 FIX: when RTF file grid is visible, the right most grid edge aligns properly between system header, titles, body rows and footers.
+
+2010-01-28 FIX: when footer tabs are used and the first footer does not have a tab, generated PDF and RTF did not use proper
+                spacing above the footer and no divider bar above footer
+                
+2010_02_10 FIX: Fixed potential problem: distance to next for col 0 may throw arroy out of bounds
+
+2010_02_10 FIX: Fixed problem: incorrect handling of distance to next with spanned headers
+
+2010_02_10 NEW FUNCIONALITY: Configuration which tells sasshiato to use distance to next in header underline.
+
+2010_02_27 NEW FUNCIONALITY: Text weighted stretching added.
+
+2010_02_27 CHANGE: default col spacing changed to 1 car length
+
+2010_03_16 FIX: If extra line was requested after the row, it was padded (the hight was larger than normal for this empty line).
+				This has been fixed.
+				
+2010_03_17 FIX If no RTF output is requested PDF bottom space is no longer increased for compatibility with RTF
+
+Client MARCH DELIVERY
+
+2010_03_24 FIX configurable size of top page paragraph in RTF
+
+2010_03_25 NEW FUNCTIONALITY allows formatting such as use of /# or /s#, superscripts in decimal cells in RTF (worked for PDF).
+
+2010_04_05 NEW FUNCTIONALITY if configured empty paragraph is always added at the top of the page for reports with sys headers/footers configured as part of the table.
+
+Client DELIVERY
+
+2010-05_03 NEW FUNCTIONALITY doffsets configuration added.  Ability to move D or RD-aligned cells left or right.  This functionality can be very data dependent 
+and should be used with care (if at all).
+
+2010-05-18 FIX header is spawn on repeated text only if the previous header spawn.
+
+2010-05-22 FIX corrected character info generation
+
+2010-06-01 FIX if passed explicitly split chars did not include a comma (now comma is implicit split char).
+
+2010-06-01 FIX empty line padding added to PDF to match with RTF padding.
+
+2010-06-07 IMPROVEMENT text weighted streching adds now fixed even amount to pre-streched columns according to prefered widths (if there is space left),
+before the after-stretch was proportional.
+
+2010-07-26 FIX HELVETICA font choice was not working with RTF destination.
+
+2010-07-27 FIX repeat of grouping variables on top of page may have incorrectly printed values from previous group
+
+2010-08-31 FIX fixed situation where empty cell carries over what was there before (may manifest itself on footnotes).
+
+2010-10-04 FIX bugus message about error in RTF compatibility removed for PDF only documents.
+              Unexpected condition: footnote padding(xyz) < rtf compatibility space (abc)
+              
+2010-10-18 Bookmarking enhancement
+
+2010-10-18 FIX bug preventing displaying /#47 in RTF
+
+2010-11-07 Print Empty Headers config enhancement
+
+2011-02-21 REMOVES place previously taken up by empty system footer (makes sure that if systems footers are empty
+            no place is used up in PDF or RTF).
+           FIX - applies ceiling and converts marigins to round integer values (in  points). 
+            iText may have problem rendering pages if marigin size in not rounded up point value 
+            (last line on the page may be not visible!).
+            
+2011-03-31 Repeatables cleared on new header.
+
+2011-07-05 Appending documents bug with bookmarks fixed
+
+2011-08-14 Strict version check on license verification
+
+2014-10-05 Widths for footer adjusted (so they work with superscript and special chars
+
+2015-10-07 Allow for setting shead_ff
+
+2016-04-27 styled text (bf, it instructions embedded in text),
+           cell borders 
+           __label_cont, __title1_cont (continued... verbiage added to repeated titles and repeated rows 
+           repeated column spans whole table
+           tabular titles
+
+2019-02-25   
+batch file notes: there
+  -Dsasshiato_home 
+  -Dwatermark_file 
+are no longer used  
+           

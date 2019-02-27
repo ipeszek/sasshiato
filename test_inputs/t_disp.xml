@@ -1,0 +1,446 @@
+<TABLE>
+  <t_disp>
+    <__col_0>  </__col_0>
+    <__col_1>  </__col_1>
+    <__col_2>  </__col_2>
+    <__col_3>  </__col_3>
+    <__align>  </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>  </__indentlev>
+    <__next_indentlev>  </__next_indentlev>
+    <__keepn>  </__keepn>
+    <__rowid>0 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>RINFO </__datatype>
+    <__title1_cont>  </__title1_cont>
+    <__sprops>xx=xx,date_fmt=ddMMMyyyy HH:mm,date_fmt_uc=true,body_pd=2,title_al=C,title_pd=4,head_pd=4,headu_sp=2,foot_pd=4,rtfpl_foot=t,foot_pos=B ,foot_ftsp=4,bseparator=f,shead_pd=4,rtfpl_shead=hf,sfoot_pd=4,rtfpl_sfoot=t,super_rs=3,col_sp=1CH,splitchars=-,esc_char=/ ,rtf_linesplit=hyphen,xx=xx </__sprops>
+    <__outformat>RTF PDF </__outformat>
+    <__layouttype>STD </__layouttype>
+    <__fontsize>9 </__fontsize>
+    <__indentsize>2 </__indentsize>
+    <__orient>L </__orient>
+    <__breakokat>  </__breakokat>
+    <__dest>RTF PDF </__dest>
+    <__filename>14.1.2.tbl_disp </__filename>
+    <__pgmname>  </__pgmname>
+    <__nodatamsg>No data </__nodatamsg>
+    <__title1>Table 14.1.2//Subject Disposition </__title1>
+    <__title2>All Enrolled Subjects </__title2>
+    <__title3>  </__title3>
+    <__title4>  </__title4>
+    <__title5>  </__title5>
+    <__title6>  </__title6>
+    <__footnot1>Note:/ftr A subject who is randomized is considered enrolled in the study. </__footnot1>
+    <__footnot2>a:/ftr This value is used as the denominator for percentages. </__footnot2>
+    <__footnot3>  </__footnot3>
+    <__footnot4>  </__footnot4>
+    <__footnot5>  </__footnot5>
+    <__footnot6>  </__footnot6>
+    <__footnot7>  </__footnot7>
+    <__footnot8>  </__footnot8>
+    <__shead_l>TEST EXAMPLE </__shead_l>
+    <__shead_m>  </__shead_m>
+    <__shead_r>_DATE_//_PAGE_ </__shead_r>
+    <__sfoot_l>File: 14.1.2.tbl_disp.rtf/pdf Program: t_disp.sas run by izape_000 on _DATE_ SDTM Date: 21JUL2016  6:00 </__sfoot_l>
+    <__sfoot_m>  </__sfoot_m>
+    <__sfoot_r>  </__sfoot_r>
+    <__path>C:/401/tfl/out </__path>
+    <__extralines>  </__extralines>
+    <__colwidths>LWH NH NH NH </__colwidths>
+    <__papersize>LETTER </__papersize>
+    <__stretch>Y  Y Y Y </__stretch>
+    <__font>TIMESROMAN </__font>
+    <__margins>1IN 0.5IN 0.5IN 0.5IN </__margins>
+    <__papersize>LETTER </__papersize>
+    <__lastcheadid>0 </__lastcheadid>
+    <__gcols>  </__gcols>
+    <__sfoot_fs>8 </__sfoot_fs>
+    <__watermark>  </__watermark>
+  </t_disp>
+  <t_disp>
+    <__col_0>  </__col_0>
+    <__col_1>Treatment Group (as Randomized) </__col_1>
+    <__col_2>Treatment Group (as Randomized) </__col_2>
+    <__col_3>  </__col_3>
+    <__align>L C C C C </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>  </__indentlev>
+    <__next_indentlev>  </__next_indentlev>
+    <__keepn>  </__keepn>
+    <__rowid>1 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>HEAD </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>  </__col_0>
+    <__col_1>Group 1//Example Drug 1//n (%) </__col_1>
+    <__col_2>Group 2//Example Drug 2//n (%) </__col_2>
+    <__col_3>Total//n (%) </__col_3>
+    <__align>L C C C C </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>  </__indentlev>
+    <__next_indentlev>  </__next_indentlev>
+    <__keepn>  </__keepn>
+    <__rowid>2 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>HEAD </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Subjects randomized~{super a} </__col_0>
+    <__col_1>64 </__col_1>
+    <__col_2>50 </__col_2>
+    <__col_3>114 </__col_3>
+    <__align>L D D D D </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>0 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>3 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Subjects received at least one dose of patiromer </__col_0>
+    <__col_1>64 (100%) </__col_1>
+    <__col_2>49 (98.0%) </__col_2>
+    <__col_3>113 (99.1%) </__col_3>
+    <__align>L RD RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>0 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>4 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Subjects completed the study </__col_0>
+    <__col_1>54 (84.4%) </__col_1>
+    <__col_2>44 (88.0%) </__col_2>
+    <__col_3>98 (86.0%) </__col_3>
+    <__align>L RD RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>0 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>5 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Subjects early terminated </__col_0>
+    <__col_1>6 (9.4%) </__col_1>
+    <__col_2>4 (8.0%) </__col_2>
+    <__col_3>10 (8.8%) </__col_3>
+    <__align>L RD RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>1 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>6 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Primary reason for early termination </__col_0>
+    <__col_1>  </__col_1>
+    <__col_2>  </__col_2>
+    <__col_3>  </__col_3>
+    <__align>L L L L L </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>1 </__indentlev>
+    <__next_indentlev>2 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>7 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Adverse Event </__col_0>
+    <__col_1>2 (3.1%) </__col_1>
+    <__col_2>1 (2.0%) </__col_2>
+    <__col_3>3 (2.6%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>2 </__indentlev>
+    <__next_indentlev>2 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>8 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Investigator Decision </__col_0>
+    <__col_1>2 (3.1%) </__col_1>
+    <__col_2>1 (2.0%) </__col_2>
+    <__col_3>3 (2.6%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>2 </__indentlev>
+    <__next_indentlev>2 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>9 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Lost To Follow-Up </__col_0>
+    <__col_1>1 (1.6%) </__col_1>
+    <__col_2>0 </__col_2>
+    <__col_3>1 (0.9%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>2 </__indentlev>
+    <__next_indentlev>2 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>10 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Withdrawal By Subject </__col_0>
+    <__col_1>0 </__col_1>
+    <__col_2>2 (4.0%) </__col_2>
+    <__col_3>2 (1.8%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>2 </__indentlev>
+    <__next_indentlev>2 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>11 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Other </__col_0>
+    <__col_1>1 (1.6%) </__col_1>
+    <__col_2>0 </__col_2>
+    <__col_3>1 (0.9%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>~-2n </__suffix>
+    <__indentlev>2 </__indentlev>
+    <__next_indentlev>0 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>12 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Subjects completed the full course of study treatment </__col_0>
+    <__col_1>  </__col_1>
+    <__col_2>  </__col_2>
+    <__col_3>  </__col_3>
+    <__align>L L L L L </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>1 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>13 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Yes </__col_0>
+    <__col_1>54 (84.4%) </__col_1>
+    <__col_2>44 (88.0%) </__col_2>
+    <__col_3>98 (86.0%) </__col_3>
+    <__align>L RD RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>1 </__indentlev>
+    <__next_indentlev>1 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>14 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>No </__col_0>
+    <__col_1>6 (9.4%) </__col_1>
+    <__col_2>4 (8.0%) </__col_2>
+    <__col_3>10 (8.8%) </__col_3>
+    <__align>L RD RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>~-2n </__suffix>
+    <__indentlev>1 </__indentlev>
+    <__next_indentlev>0 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>15 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Reason for not completing study treatment </__col_0>
+    <__col_1>  </__col_1>
+    <__col_2>  </__col_2>
+    <__col_3>  </__col_3>
+    <__align>L L L L L </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>1 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>16 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>AE/SAE </__col_0>
+    <__col_1>2 (3.1%) </__col_1>
+    <__col_2>1 (2.0%) </__col_2>
+    <__col_3>3 (2.6%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>  </__suffix>
+    <__indentlev>1 </__indentlev>
+    <__next_indentlev>1 </__next_indentlev>
+    <__keepn>1 </__keepn>
+    <__rowid>17 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Early Termination </__col_0>
+    <__col_1>4 (6.3%) </__col_1>
+    <__col_2>3 (6.0%) </__col_2>
+    <__col_3>7 (6.1%) </__col_3>
+    <__align>L RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>~-2n </__suffix>
+    <__indentlev>1 </__indentlev>
+    <__next_indentlev>0 </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>18 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+  <t_disp>
+    <__col_0>Subjects completed 2-week follow-up visits </__col_0>
+    <__col_1>59 (92.2%) </__col_1>
+    <__col_2>46 (92.0%) </__col_2>
+    <__col_3>105 (92.1%) </__col_3>
+    <__align>L RD RD RD RD </__align>
+    <__dist2next>  </__dist2next>
+    <__suffix>~-2n </__suffix>
+    <__indentlev>0 </__indentlev>
+    <__next_indentlev>  </__next_indentlev>
+    <__keepn>0 </__keepn>
+    <__rowid>19 </__rowid>
+    <__cellfonts>  </__cellfonts>
+    <__cellborders>  </__cellborders>
+    <__topborderstyle>  </__topborderstyle>
+    <__bottomborderstyle>  </__bottomborderstyle>
+    <__label_cont>  </__label_cont>
+    <__varbygrp>  </__varbygrp>
+    <__datatype>TBODY </__datatype>
+  </t_disp>
+</TABLE>

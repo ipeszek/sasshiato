@@ -1,0 +1,80 @@
+
+1. Decimal alignment differences between RTF and PDF.
+By default RTF will not align comma (,) separated numbers with decimal alignment. For example
+  99.9 and 10, 20 will be aligned as:
+  99.9
+ 10, 20
+ The alignment happens on space not on comma. This is due to the fact that Word interprets comma (,) as
+ number grouping symbol (as in 10,000,000.00) 
+ and thinks of it as part of the number (so the number is 10, and not just 10).
+ This can be configured by changing Regional Settings in sindows control panel. 
+ 
+ 2. To print "\" the double slash "\\" has to be used.  This is done to allow future advance ability 
+ to pass rtf commands directly. Currently passing rft is not fully supported. 
+ 
+ Some of the known issues: Passing explicit rft commands will not work with dest=pdf and will result in incorrect column width calcuations (column widths need to be defined explicilty to use it).
+ 
+3. Difference in number of rows between PDF and RTF documents.  Sasshiato will match number of rows between RTF and PDF 
+if both are generated at the same time.  However, if PDF is generated on its own it can have 2 more lines per page
+when compared with RTF output.  This happens when RTF is requested to place system headers/footers/and or system footers as part of the table.
+This is a result of how Microsoft Word displays documents.  Microsoft Word will ingore page break unless page break is followed with a paragraph.
+If System Header is places in table, the pagebreaks will not work properly unless an empty paragraph is inserted at the top of the new page.
+This costs one line.  The other problem is that Microsoft Word will not accept document ending with a table row and will 
+automatically append a paragraph with font size 12 at the end.  If system footer is placed as part of the table at the end
+of the very bottom of the page (as expected) then Word will insert an empty page at the end of the document with the font size 12 paragraph.
+To resolve this problem, sasshiato inserts an empty paragraph at the end of the document with the same font size as the one used to generate the table.
+This costs the second line.
+
+4. NH and LWH are not calcuated for spanning header rows
+
+5. If calc option for rtf_linesplit is used. Non-hypenating RTF soft line breaking may not be exact with System Headers if _PAGE_ or _DATE_ is used.
+This can be simply avoided by provinding adequate space in system header.
+Sasshiato assumes that the system headers fit (do not require soft hypenation.
+
+6. If calc option for rtf_linesplit is used. The non-hypenating breaks can also be off if special font symbol or superscript is used.
+Especially long superscript text can affect the way RTF is layed out.
+The negative impact should be rare, especially if superscripts are single character.  
+The overall impact of soft line breaks is the formatting differences between PDF and RTF. 
+RTF may end up with additional soft line breaks and even page spills. 
+Use larger rtf_extlns to avoid page spills.
+
+7. If hyphen option for rtf_linesplit is used the soft nonvisible hyphenation points are inserted 
+in possible breaking points. This makes the Word presenation very close to our calcuations.
+The sideeffect is that additional RTF symbology is inserted to hide inserted hyphenation and can 
+possibly produce sideeffects if partial copy and paste to a different document is used.
+In our testing we have not encountered such behavior.
+
+8.Split char work with the /# syntax (where / is the ESCAPE char).
+
+9. Combining RD and D aligment may not work the same in PDF and RTF.
+The reason for it is that Microsoft Word aligns on certain characters such as "/" so
+when printing percentages with denominators the division symbol "/" will align in RTF 
+with the right most character in the first word alingned as RD.  
+To resolve this problem use RD alignmnet when printing single statistics such as percent/denom.
+
+10. With RTF output direction, if all columns are marked with no stretch, and system headers/footers/system footers
+are placed in the table then the body rows appear not centered.
+This is due to the fact that Microsoft Word ignores requests to center table rows if table rows have different
+sizes and there are no paragraph breaks between the rows of different sizes.  
+To achieve centered aligned RTF table rows which do not occupy whole page size headers/footers and system footers need to be 
+placed in the document header/footer area (which is Sasshiato configuration).
+With this configuration titles are placed automatically as paragraphs and all table consists of only body rows
+which have the same size.
+
+11. If the separator is requested above footnote as opposed to below table and there are no footnotes
+or system footnotes then in RTF the separator is not shown (it is shown in PDF).
+
+12. In-text reports produce separate tables for each value of varbygrp/varbylab.
+Also separate tables are produced if columns do not fit on one page and vertical split 
+has to happen.  In situaltions where both vertical splits and varbygrp are encountered
+sparate tables are generated for both in the following order:
+The first set of columns is printed for each of the varbylab groups, 
+then the second set of columns is prited for all varbygroups, and so on. 
+Current version of sasshiato does not allow to change this order. 
+
+13. The use of _PAGE_ with in-text rtf tables when rtfpl_shead=t
+yields incorrect results.  Typically in-text tables should use rtfpl_shead=n but 
+rtfpl_shead=hf is also supported.
+
+
+14. In sizing calculations like LH only last header record is used.
