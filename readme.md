@@ -2,20 +2,22 @@ Sasshiato: Java PDF and RTF rendering companion program for RRG
 -----------------------------------------------------------------
 
 Sasshiato can generate PDF and RTF files from XML outputs generated from SAS.
-It has been designed to work well with RRG macro reporting system
+It is a standalone project but it has been designed to work well with RRG macro reporting system
 (https://github.com/ipeszek/RRG).
 
 Sasshiato has been around since 2009. This is open source version of this program. 
 Open source sasshiato starts with version 4.0 reserving <= 3.x for previous, not open
-sourced product.
+sourced versions of the product.
 
-Setup
-------------
+Setup (installation)
+--------------------
 
 These instructions assume POSIX environment (Linux, Mac).  
-Windows instructions should translate easily. 
+Windows setup instructions are very similar. 
 
-Clone this repo and run gradle jar task
+Chose a parent folder you want to install sasshiato into. 
+Here we will call it `someFolder`. Open terminal in that folder. 
+Clone this repo and run gradle jar task:
 
 ```
 someFolder> git clone https://github.com/ipeszek/sasshiato.git
@@ -24,7 +26,9 @@ sasshiato> ./gradlew
 sasshiato> ./gradlew jar
 ```
 
-this shoud create folder 
+If you trying to just install sasshiato for use with RRG you can just go to __With RRG__ section.
+
+The rest of this section explains what has just happened. This should create the folder: 
 ```
 sasshiato/build/libs
 ```
@@ -42,7 +46,7 @@ With RRG
 --------
 
 Configure SASSHIATO_HOME in RRG to where this project was cloned,
-i.e. `someFolder/sasshiato`.  
+i.e. `someFolder/sasshiato` (see the corresponding setup instructions). 
 
 
 Documentation
@@ -52,13 +56,13 @@ Here somewhat outdated but much more complete documents:
 * [SasshiatoDocumentation](docs/SasshiatoDocumentation.pdf)
 
 
-_The following notes are incomplete but can provide useful additional information:_ 
+_The following notes are incomplete but can provide some additional useful information:_ 
 
 Configuration
 -------------
-Default global configuration is defined in (sasshiato.props)[src/main/resources/sasshiato.props].
+Default global configuration is defined in [sasshiato.props](src/main/resources/sasshiato.props).
 These can be changed/overridden in the input XML document
-using `<__sprops></__sprops>` tag in the `<__datatype>RINFO </__datatype>` record as a comma delimited name=value list.
+using `<__sprops></__sprops>` tag in the `<__datatype>RINFO </__datatype>` record as a comma delimited `name = value` list.
 See example input XML in included `/test_inputs` folder.
 
 Requesting file generation
@@ -78,7 +82,7 @@ watermark_file=<fully qualified image file>
 in the input java properties file.
 
 It is possible to use text or rtf file (text encoded images are supported for rtf outputs only). 
-To create rft wartermark, save rft file and clean it up removing and \header or \headerr constructs.
+To create rft wartermark, save rft file and clean it up removing `\header` or `\headerr` constructs.
 
 All other extensions are treated as images: can be jpeg, png, wmf, bmp.
 no resizing is done for rtf/txt files with images.
