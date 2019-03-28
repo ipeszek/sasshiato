@@ -15,6 +15,8 @@ Setup (installation)
 These instructions assume POSIX environment (Linux, Mac).  
 Windows setup instructions are very similar. 
 
+You need to have JDK installed and JAVA_HOME properly configured for
+`gradle` to work correctly. 
 Chose a parent folder you want to install sasshiato into. 
 Here we will call it `someFolder`. Open terminal in that folder. 
 Clone this repo and run gradle jar task:
