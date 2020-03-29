@@ -1,5 +1,13 @@
 xml_in_file=./test_inputs/t_disp.xml
 out_dir=./test_outputs
+
+#
+# work_dir is optional if set it it used for creating files
+# which are then moved to out_dir
+# if not present, files are created in out_dir directly
+#
+# work_dir=./tmp
+
 log2=file
 log2f=./test_outputs/t_disp.log
 log2lev=150

@@ -3,6 +3,7 @@
 .settings/
 out/
 /build/
+tmp/*
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapped.jar

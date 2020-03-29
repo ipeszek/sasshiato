@@ -76,12 +76,19 @@ public class SasshiatoTrace {
 	public static void markStart(){
 		startDate = new java.util.Date();
 	}
+	public static void markStart(String what){
+		startDate = new java.util.Date();
+		log(LEV_REQUIRED, "Processing of "+ what + " started"); 
+		if(out!=System.out && !includeStdOutAlways){
+			System.out.println("Processing of "+ what + " started");
+		}
+	}
 	
 	public static void markFinish(String what){
 		Date end = new Date();
 		long duration = end.getTime() - startDate.getTime();
 		log(LEV_REQUIRED, "Processing of "+ what + " has finished, processing took " + displayDuration(duration));
-		if(out!=System.out){
+		if(out!=System.out && !includeStdOutAlways){
 			System.out.println("Processing of "+ what + " has finished, processing took " + displayDuration(duration));
 		}
 	}
@@ -118,6 +125,9 @@ public class SasshiatoTrace {
 		Date end = new Date();
 		long duration = end.getTime() - startDate.getTime();
 		System.out.println(displayDuration(duration) + " " + phase + " " + message);						
+	}
+	public static void displayFinalMessage(String message) {
+		System.out.println(message);
 	}
 	public static PrintStream getDirectContent(){
 		return out;
@@ -193,19 +203,19 @@ public class SasshiatoTrace {
 				String line = s.substring(0, 110);
 				s = "->  " + s.substring(110);
 				out.println(line);
-				if (includeStdOutAlways && is2File)
+				if (includeStdOutAlways && out != System.out)
 				   System.out.println(line);
 				spawnLines = true;
 			}
 			if(!StringUtil.isEmpty(s)) out.println(s);
 			if(spawnLines) {
 				out.println();
-				if (includeStdOutAlways && is2File)
+				if (includeStdOutAlways && out != System.out)
 					System.out.println(s);
 			}
 		} else {
 			out.println(s);
-			if (includeStdOutAlways && is2File)
+			if (includeStdOutAlways && out != System.out)
 				System.out.println(s);
 
 		}
