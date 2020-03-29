@@ -815,7 +815,7 @@ public class RtfPrinterUtil {
 							ends[j]);
 					if (colspan < 0)
 						throw new Exception(
-								"ERROR: Unexpected Error, please contact BTCISP, colspan="
+								"ERROR: Unexpected Error, please please file issue with https://github.com/ipeszek/sasshiato, colspan="
 										+ colspan);
 					StyledText celltext = cells[j];
 					boolean hasSeparationAdjR = raf

@@ -106,7 +106,7 @@ public class Xml_2_Report {
 		boolean isPdfOut = false;
 		Date start = new Date();
 		try {
-			SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "SASSHIATO "+ SasshiatoVersion.ver +" (BTCISP product, www.btcisp.com) \n    powered by iText v2.1.4"); 
+			SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "SASSHIATO "+ SasshiatoVersion.ver +" (https://github.com/ipeszek/sasshiato) \n    powered by iText v2.1.4"); 
 			if(!"btcisp.com".equals(compName)) 
 				SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "This product is licensed to " + compName + "\n"); 
 			else 
