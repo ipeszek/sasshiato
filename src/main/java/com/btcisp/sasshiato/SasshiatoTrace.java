@@ -15,6 +15,7 @@ import java.util.Date;
 import javax.xml.stream.events.EndDocument;
 
 import com.btcisp.utils.StringUtil;
+import java.text.SimpleDateFormat;
 
 public class SasshiatoTrace {
 
@@ -33,6 +34,8 @@ public class SasshiatoTrace {
 	private static OutputStream outs;
 	private static boolean printExceptionTrace = true;
 	public static boolean is2File = false;
+	public static boolean includeStdOutAlways = false;
+	public static boolean traceDate = true;
 
 	public static void initTrace(String direction, String fileName, int level){
 		trace_level = level;
@@ -172,19 +175,39 @@ public class SasshiatoTrace {
 		println("WARNING: " + msg, true);
 	}
 
-	private static void println(String s, boolean wrap){
+
+	static SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm:ss");
+
+	private static void println(String s0, boolean wrap){
+		String s;
+		if (traceDate)
+		{
+		  Date now = new Date();
+		  s = "[" + timeFormatter.format(now) + "] " + s0;
+		} else {
+			s = s0;
+		}
 		if(wrap){
 		boolean spawnLines = false;
 			while(s!=null && s.length()>110){
 				String line = s.substring(0, 110);
 				s = "->  " + s.substring(110);
 				out.println(line);
+				if (includeStdOutAlways && is2File)
+				   System.out.println(line);
 				spawnLines = true;
 			}
 			if(!StringUtil.isEmpty(s)) out.println(s);
-			if(spawnLines) out.println();
+			if(spawnLines) {
+				out.println();
+				if (includeStdOutAlways && is2File)
+					System.out.println(s);
+			}
 		} else {
-		    out.println(s);
+			out.println(s);
+			if (includeStdOutAlways && is2File)
+				System.out.println(s);
+
 		}
 		out.flush();
 	}
