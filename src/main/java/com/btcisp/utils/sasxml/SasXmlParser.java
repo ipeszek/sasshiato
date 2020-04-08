@@ -89,8 +89,12 @@ public class SasXmlParser {
 	   	        		}
 	   	        		break;
 	   	        	case XMLStreamConstants.CHARACTERS:
-	   	        		if(currentVariableName!=null) 
-	   	        			currentVariableText = xmlr.getText();
+					   if(currentVariableName!=null) {
+						    if (currentVariableText == null)
+						        currentVariableText = xmlr.getText();
+						    else
+						        currentVariableText = currentVariableText + xmlr.getText();
+				        }
 	   	        		break;
 	   	        	case XMLStreamConstants.END_ELEMENT:
 	   	        		String locName = xmlr.getLocalName();
