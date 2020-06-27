@@ -174,13 +174,21 @@ public class SasshiatoMain {
 				}
 				Xml_2_Report creator = new Xml_2_Report();
 				if (work_dir != null) {
-					List<File> workingFs = creator.createReport(xmldoc, watermark_doc, work_dir);
-					SasshiatoTrace.markStart("Moving files to " + out_dir);
-                    List<File> files = creator.moveToFinalDest(out_dir, workingFs);
-					SasshiatoTrace.log(SasshiatoTrace.LEV_DETAIL, "Generated final file list " + files);
-					SasshiatoTrace.markFinish("moved file list " + files);
+					
+					Pair<List<File>, ReportSetup> created = creator.createReport(xmldoc, watermark_doc, work_dir);
+					List<File> workingFs = created.getLeft();
+					ReportSetup rs = created.getRight(); 
+					if(rs.isAllowFutureAppend()) {
+						SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "Appendable doc, keeping files in work dir");
+						SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "Files: " + workingFs);
+					} else {
+						SasshiatoTrace.markStart("Moving files to " + out_dir);
+						List<File> files = creator.moveToFinalDest(out_dir, workingFs);
+						SasshiatoTrace.log(SasshiatoTrace.LEV_DETAIL, "Generated final file list " + files);
+						SasshiatoTrace.markFinish("moved file list " + files);
+					}
 				} else {
-					List<File> files = creator.createReport(xmldoc, watermark_doc, out_dir);
+					List<File> files = creator.createReport(xmldoc, watermark_doc, out_dir).getLeft();
 					SasshiatoTrace.log(SasshiatoTrace.LEV_DETAIL, "Generated file list " + files);
 					SasshiatoTrace.displayFinalMessage("Generated file list " + files);
 			    }

@@ -67,7 +67,7 @@ public class Xml_2_Report {
 	 * @param outdir - if null the output folder is read from RcdInfo
 	 * @throws Exception
 	 */
-	public List<File> createReport(String xmlDocument, String watermark_doc, String outdir) throws Throwable {
+	public Pair<List<File>, ReportSetup> createReport(String xmlDocument, String watermark_doc, String outdir) throws Throwable {
 		// HeaderTablet: gives us header columns: column text and alignment and
 		// span;
 		// pages: gives us column groups for pages, with column ID and width,
@@ -91,7 +91,7 @@ public class Xml_2_Report {
         Properties spprops = sp.getSeProperties();
         if(spprops==null) {
         	SasshiatoTrace.logError("Missing internal configuration");
-        	return result;
+        	throw new Exception("Missing internal configuration");
         }
         String compName = spprops.getProperty("companyName", "btcisp.com");
          
@@ -395,7 +395,7 @@ public class Xml_2_Report {
 			//SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED,"INFO: Processing " + xmlDocument + " ended, duration=" + duration + "(ms)");
 			//SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED,"INFO: Processing " + xmlDocument + " ended");
 			SasshiatoTrace.markFinish(xmlDocument);
-			return result;
+			return new Pair(result, reportSetup);
 			// doc2.close();
 		} catch(Throwable e){
 			if(e instanceof SasParserException && lastParsed !=null) {
