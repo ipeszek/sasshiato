@@ -198,10 +198,11 @@ public class SasshiatoTrace {
 			s = s0;
 		}
 		if(wrap){
-		boolean spawnLines = false;
-			while(s!=null && s.length()>110){
-				String line = s.substring(0, 110);
-				s = "->  " + s.substring(110);
+		    boolean spawnLines = false;
+		    int max_per_line = 90;
+			while(s!=null && s.length()>max_per_line){
+				String line = s.substring(0, max_per_line);
+				s = "->  " + s.substring(max_per_line);
 				out.println(line);
 				if (includeStdOutAlways && out != System.out)
 				   System.out.println(line);
