@@ -345,6 +345,7 @@ public class Xml_2_Report {
 				}
 				result.add(new File(outDocPathFinal));
 			}
+
 			if(reportSetup.isRtfOut() && !reportSetup.isAllowFutureAppend() && laf.isRestampingRequired()){
 				String totPagesS = (String) documentholder.getStratchBoard().get("rtf.totPages");
 				int totPagesI = Integer.parseInt(totPagesS);
@@ -383,7 +384,10 @@ public class Xml_2_Report {
 				}
 				SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "Restamping of rtf document " + outDocPathBase + " has finished");
 				result.add(f);
-			}
+			} else if (reportSetup.isRtfOut() && !reportSetup.isAllowFutureAppend()){
+                File f = new File(outDocPathBase + ".rtf");
+                result.add(f);
+            }			
 			if(isEmptyTable) SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED,"INFO: document " + outDocPathFinal + " generated as empty table");
 			//duration =  (new Date()).getTime() - start.getTime();
 			if(documentholder !=null) {
