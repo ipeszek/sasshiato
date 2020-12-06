@@ -243,7 +243,7 @@ public class PdfPrinterUtil {
 							ends[j]);
 					if (colspan < 0 || totalwith < 0)
 						throw new Exception(
-								"ERROR: Unexpected Error, please contact BTCISP, colspan="
+								"ERROR: Unexpected Error, please please file issue with https://github.com/ipeszek/sasshiato, colspan="
 										+ colspan + ", totalwidth=" + totalwith);
 					StyledText celltext = cells[j];
 					PdfPCell cell = null;

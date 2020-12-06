@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.btcisp.utils.NonAsciiScan;
 import com.btcisp.utils.StringUtil;
+import java.util.List;
 
 
 public class SasshiatoMain {
@@ -23,6 +24,7 @@ public class SasshiatoMain {
 	public static void main(String[] args) {
 	       String xmldoc = null;
 	       String out_dir = null;
+	       String work_dir = null;
 	       String watermark_doc = null;
 	       String log2 = null;
 	       String log2f = null;
@@ -48,6 +50,7 @@ public class SasshiatoMain {
 		  
 		  xmldoc = cprops.getProperty("xml_in_file");
 	      out_dir = cprops.getProperty("out_dir");
+	      work_dir = cprops.getProperty("work_dir");
 	      watermark_doc = cprops.getProperty("watermark_file");
 	      log2 = cprops.getProperty("log2", "file");
 	      log2f = cprops.getProperty("log2f");
@@ -64,6 +67,9 @@ public class SasshiatoMain {
 	       }
 	       if(out_dir!=null && (out_dir.trim().equals("")|| out_dir.trim().equals("NONE"))){
 	    	   out_dir=null;
+	       }
+	       if(work_dir!=null && (work_dir.trim().equals("")|| work_dir.trim().equals("NONE"))){
+			   work_dir=null;
 	       }
 	       if(watermark_doc!=null && (watermark_doc.trim().equals("")|| watermark_doc.trim().equalsIgnoreCase("NONE"))){
 	    	   watermark_doc=null;
@@ -121,6 +127,15 @@ public class SasshiatoMain {
 		        		return;
 		        	}
 		        }
+			}
+			
+			if(work_dir!=null) {
+		        File dir = new File(work_dir);
+		        if(dir.exists() && !dir.isDirectory()) {
+		        	SasshiatoTrace.logError("Specified work directory is not a directory");
+		        	SasshiatoTrace.close();
+		        	return;
+		        }
 	        }
 
 	        String watermarkmsg=watermark_doc==null?"<none>": watermark_doc;
@@ -158,7 +173,25 @@ public class SasshiatoMain {
 					}
 				}
 				Xml_2_Report creator = new Xml_2_Report();
-				creator.createReport(xmldoc, watermark_doc, out_dir);
+				if (work_dir != null) {
+					
+					Pair<List<File>, ReportSetup> created = creator.createReport(xmldoc, watermark_doc, work_dir);
+					List<File> workingFs = created.getLeft();
+					ReportSetup rs = created.getRight(); 
+					if(rs.isAllowFutureAppend()) {
+						SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "Appendable doc, keeping files in work dir");
+						SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "Files: " + workingFs);
+					} else {
+						SasshiatoTrace.markStart("Moving files to " + out_dir);
+						List<File> files = creator.moveToFinalDest(out_dir, workingFs);
+						SasshiatoTrace.log(SasshiatoTrace.LEV_DETAIL, "Generated final file list " + files);
+						SasshiatoTrace.markFinish("moved file list " + files);
+					}
+				} else {
+					List<File> files = creator.createReport(xmldoc, watermark_doc, out_dir).getLeft();
+					SasshiatoTrace.log(SasshiatoTrace.LEV_DETAIL, "Generated file list " + files);
+					SasshiatoTrace.displayFinalMessage("Generated file list " + files);
+			    }
 			}catch(Throwable e){
 				SasshiatoTrace.logError("processing " + xmldoc + ":", e);
 			}finally{

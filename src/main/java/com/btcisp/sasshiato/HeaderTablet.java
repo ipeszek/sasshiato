@@ -103,7 +103,7 @@ public class HeaderTablet {
 
 			StyledText s1 = header[counter];
 			if(s1==null) {
-				SasshiatoTrace.logError( "Unexpected null header record, err:HeaderTablet:001 - please contact BTCISP if you see this message, counter= " + counter + ",row=" + row);
+				SasshiatoTrace.logError( "Unexpected null header record, err:HeaderTablet:001 - please file issue with https://github.com/ipeszek/sasshiato if you see this message, counter= " + counter + ",row=" + row);
 				s1=StyledText.EMPTY;
 			}
 			if (s1.equalsAsText(s) && (lastEndCId ==-1 || colids[endc+1] <= lastEndCId)) {

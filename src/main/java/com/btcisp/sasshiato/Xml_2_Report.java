@@ -67,7 +67,7 @@ public class Xml_2_Report {
 	 * @param outdir - if null the output folder is read from RcdInfo
 	 * @throws Exception
 	 */
-	public void createReport(String xmlDocument, String watermark_doc, String outdir) throws Throwable {
+	public Pair<List<File>, ReportSetup> createReport(String xmlDocument, String watermark_doc, String outdir) throws Throwable {
 		// HeaderTablet: gives us header columns: column text and alignment and
 		// span;
 		// pages: gives us column groups for pages, with column ID and width,
@@ -78,9 +78,9 @@ public class Xml_2_Report {
 		// tableWidth, tableHeight are properties of Main;
 		SasshiatoTrace.markStart();
 		SasshiatoTrace.displayProgress("Document Preparation",  SasshiatoTrace.PROGRESS_STARTED);
-
+        List<File> result = new ArrayList<File>();
 		File watermarkF = null;
-       if(watermark_doc!=null){
+        if(watermark_doc!=null){
         	watermarkF = new File(watermark_doc);
         	if(!watermarkF.exists()){
         		throw new Exception("Watermark file " + watermarkF.getAbsolutePath() + " does not exist");
@@ -91,7 +91,7 @@ public class Xml_2_Report {
         Properties spprops = sp.getSeProperties();
         if(spprops==null) {
         	SasshiatoTrace.logError("Missing internal configuration");
-        	return;
+        	throw new Exception("Missing internal configuration");
         }
         String compName = spprops.getProperty("companyName", "btcisp.com");
          
@@ -106,13 +106,14 @@ public class Xml_2_Report {
 		boolean isPdfOut = false;
 		Date start = new Date();
 		try {
-			SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "SASSHIATO "+ SasshiatoVersion.ver +" (BTCISP product, www.btcisp.com) \n    powered by iText v2.1.4"); 
+			SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "SASSHIATO "+ SasshiatoVersion.ver +" (https://github.com/ipeszek/sasshiato) \n    powered by iText v2.1.4"); 
 			if(!"btcisp.com".equals(compName)) 
 				SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "This product is licensed to " + compName + "\n"); 
 			else 
 				SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "SASSHIATO is the property of Izabella Peszek" + "\n"); 
 				
 			SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "INFO: Processing " + xmlDocument + " started");
+
 
 			int numberOfColumns = 0;
 			// Document doc2 = new Document();
@@ -167,6 +168,7 @@ public class Xml_2_Report {
 			String fname = info.getFilename();
 			if(outdir==null) outdir = info.getPath();
 			File outdirF = new File(outdir);
+			 
 			if(!outdirF.exists()){
 				SasshiatoTrace.log(SasshiatoTrace.LEV_INFO,"INFO: " +outdir + " directory does not exist, creating ...");
 				if(outdirF.mkdirs())
@@ -341,7 +343,9 @@ public class Xml_2_Report {
 			        File gen = new File(currentFileName);
 			        gen.renameTo(dest);					
 				}
+				result.add(new File(outDocPathFinal));
 			}
+
 			if(reportSetup.isRtfOut() && !reportSetup.isAllowFutureAppend() && laf.isRestampingRequired()){
 				String totPagesS = (String) documentholder.getStratchBoard().get("rtf.totPages");
 				int totPagesI = Integer.parseInt(totPagesS);
@@ -379,8 +383,11 @@ public class Xml_2_Report {
 						}
 				}
 				SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "Restamping of rtf document " + outDocPathBase + " has finished");
-				
-			}
+				result.add(f);
+			} else if (reportSetup.isRtfOut() && !reportSetup.isAllowFutureAppend()){
+                File f = new File(outDocPathBase + ".rtf");
+                result.add(f);
+            }			
 			if(isEmptyTable) SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED,"INFO: document " + outDocPathFinal + " generated as empty table");
 			//duration =  (new Date()).getTime() - start.getTime();
 			if(documentholder !=null) {
@@ -392,6 +399,7 @@ public class Xml_2_Report {
 			//SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED,"INFO: Processing " + xmlDocument + " ended, duration=" + duration + "(ms)");
 			//SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED,"INFO: Processing " + xmlDocument + " ended");
 			SasshiatoTrace.markFinish(xmlDocument);
+			return new Pair(result, reportSetup);
 			// doc2.close();
 		} catch(Throwable e){
 			if(e instanceof SasParserException && lastParsed !=null) {
@@ -407,6 +415,28 @@ public class Xml_2_Report {
 		}
 	}
 	
+    public List<File> moveToFinalDest (String finalFolder, List<File> files) {
+		List<File> res = new ArrayList<File>();
+		for (File f : files) {
+			File dest = new File (finalFolder, f.getName());
+			if(f.exists()) {
+				if(dest.exists()) {
+					if (dest.delete()) 
+						SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "deleted old file " + dest.getAbsolutePath());
+					else 	
+					    SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "error deleting old file " + dest.getAbsolutePath());
+				} 
+				if(f.renameTo(dest))
+					res.add(dest);
+				else 
+				    SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "ERROR moving " + f.getAbsolutePath());
+			} else {
+				SasshiatoTrace.log(SasshiatoTrace.LEV_REQUIRED, "ERROR No working file " + f.getAbsolutePath());
+			}
+		}
+		return res;
+	}
+
 	private void configureRtf(DocumentHolder documentholder){
 		//logic perfomed by listener
 	}

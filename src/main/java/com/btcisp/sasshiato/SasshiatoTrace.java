@@ -15,6 +15,7 @@ import java.util.Date;
 import javax.xml.stream.events.EndDocument;
 
 import com.btcisp.utils.StringUtil;
+import java.text.SimpleDateFormat;
 
 public class SasshiatoTrace {
 
@@ -33,6 +34,8 @@ public class SasshiatoTrace {
 	private static OutputStream outs;
 	private static boolean printExceptionTrace = true;
 	public static boolean is2File = false;
+	public static boolean includeStdOutAlways = false;
+	public static boolean traceDate = true;
 
 	public static void initTrace(String direction, String fileName, int level){
 		trace_level = level;
@@ -73,12 +76,19 @@ public class SasshiatoTrace {
 	public static void markStart(){
 		startDate = new java.util.Date();
 	}
+	public static void markStart(String what){
+		startDate = new java.util.Date();
+		log(LEV_REQUIRED, "Processing of "+ what + " started"); 
+		if(out!=System.out && !includeStdOutAlways){
+			System.out.println("Processing of "+ what + " started");
+		}
+	}
 	
 	public static void markFinish(String what){
 		Date end = new Date();
 		long duration = end.getTime() - startDate.getTime();
 		log(LEV_REQUIRED, "Processing of "+ what + " has finished, processing took " + displayDuration(duration));
-		if(out!=System.out){
+		if(out!=System.out && !includeStdOutAlways){
 			System.out.println("Processing of "+ what + " has finished, processing took " + displayDuration(duration));
 		}
 	}
@@ -115,6 +125,9 @@ public class SasshiatoTrace {
 		Date end = new Date();
 		long duration = end.getTime() - startDate.getTime();
 		System.out.println(displayDuration(duration) + " " + phase + " " + message);						
+	}
+	public static void displayFinalMessage(String message) {
+		System.out.println(message);
 	}
 	public static PrintStream getDirectContent(){
 		return out;
@@ -172,19 +185,40 @@ public class SasshiatoTrace {
 		println("WARNING: " + msg, true);
 	}
 
-	private static void println(String s, boolean wrap){
+
+	static SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm:ss");
+
+	private static void println(String s0, boolean wrap){
+		String s;
+		if (traceDate)
+		{
+		  Date now = new Date();
+		  s = "[" + timeFormatter.format(now) + "] " + s0;
+		} else {
+			s = s0;
+		}
 		if(wrap){
-		boolean spawnLines = false;
-			while(s!=null && s.length()>110){
-				String line = s.substring(0, 110);
-				s = "->  " + s.substring(110);
+		    boolean spawnLines = false;
+		    int max_per_line = 90;
+			while(s!=null && s.length()>max_per_line){
+				String line = s.substring(0, max_per_line);
+				s = "->  " + s.substring(max_per_line);
 				out.println(line);
+				if (includeStdOutAlways && out != System.out)
+				   System.out.println(line);
 				spawnLines = true;
 			}
 			if(!StringUtil.isEmpty(s)) out.println(s);
-			if(spawnLines) out.println();
+			if(spawnLines) {
+				out.println();
+				if (includeStdOutAlways && out != System.out)
+					System.out.println(s);
+			}
 		} else {
-		    out.println(s);
+			out.println(s);
+			if (includeStdOutAlways && out != System.out)
+				System.out.println(s);
+
 		}
 		out.flush();
 	}
