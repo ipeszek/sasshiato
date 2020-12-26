@@ -27,7 +27,8 @@ import com.btcisp.utils.StringUtil;
 public class RcdInfo {
 	String __dest, __filename, __path, __version, __orient, __colwidths, __breakOkAt,
 	__title1, __title1_cont, __title2, __title3, __title4, __title5, __title6, __footnot1,
-	__footnot2, __footnot3, __footnot4, __footnot5, __footnot6, __footnot7, __footnot8,
+	__footnot2, __footnot3, __footnot4, __footnot5, __footnot6, __footnot7, __footnot8, 
+    __footnot9, __footnot10, __footnot11, __footnot12, __footnot13, __footnot14,
 	__systitle, __pgmname, __shead_l, __shead_m,__shead_r, __sfoot_l, __sfoot_m,__sfoot_r, __sprops, __bookmarks_rtf,__bookmarks_pdf, 
 	__stretch, __font, __nodatamsg, __indentsize, __margins , __rtype, __gcols, __dist2next, __layouttype, __doffsets;
 	float __fontsize, __sfoot_fs;
@@ -71,7 +72,13 @@ public class RcdInfo {
 		__footnot6 = checkFootnote((String) map.get("__footnot6"));
 		__footnot7 = checkFootnote((String) map.get("__footnot7"));
 		__footnot8 = checkFootnote((String) map.get("__footnot8"));
-		__systitle = (String) map.get("__systitle");
+        __footnot9 = checkFootnote((String) map.get("__footnot9"));
+        __footnot10 = checkFootnote((String) map.get("__footnot10"));
+        __footnot11 = checkFootnote((String) map.get("__footnot11"));
+        __footnot12 = checkFootnote((String) map.get("__footnot12"));
+        __footnot13 = checkFootnote((String) map.get("__footnot13"));
+        __footnot14 = checkFootnote((String) map.get("__footnot14"));
+        __systitle = (String) map.get("__systitle");
 		__stretch = (String) map.get("__stretch");
 		//System.out.println("stretch is "+ __stretch);
 		__sprops = (String) map.get("__sprops");
@@ -267,6 +274,12 @@ public class RcdInfo {
 		if (__footnot6!=null) foots.add(__footnot6);
 		if (__footnot7!=null) foots.add(__footnot7);
 		if (__footnot8!=null) foots.add(__footnot8);
+        if (__footnot9!=null) foots.add(__footnot9);
+        if (__footnot10!=null) foots.add(__footnot10);
+        if (__footnot11!=null) foots.add(__footnot11);
+        if (__footnot12!=null) foots.add(__footnot12);
+        if (__footnot13!=null) foots.add(__footnot13);
+        if (__footnot14!=null) foots.add(__footnot14);
 		
 		ArrayList<StyledText> res = new ArrayList<StyledText>();
 		for (int i = 0; i < foots.size(); i++) {
