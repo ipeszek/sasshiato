@@ -7,5 +7,5 @@
 package com.btcisp.sasshiato;
 
 public class SasshiatoVersion {
-	public static final String ver="4.0.2 (2020.12.26)";
+	public static final String ver="4.0.3 (2021.01.09)";
 }

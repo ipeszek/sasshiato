@@ -100,4 +100,8 @@ are no longer used
 
 2020-03-28 work-dir for handling slow destination folders 
 
-2020-12-26 allow upto 14 footnotes          
+2020-12-26 allow upto 14 footnotes    
+
+2021-01-09 removed space from superscipt in PDF
+           Fixed cell borders in RTF for split page documents  
+           Added subscript "~{sub }" supprort (for PDF uses negative superscript rise value, no new configuration is needed)    

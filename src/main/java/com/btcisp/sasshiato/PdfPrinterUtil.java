@@ -1075,11 +1075,11 @@ public class PdfPrinterUtil {
 			String styleOverride = styledChunk.getEncodedNoIndentingStyles();
 			Font f = laf.getFont(styletype, styleOverride);
 			
-			int ssidx_start = chunkText.toLowerCase().indexOf("~{super");
+			int s0sidx_start = chunkText.toLowerCase().indexOf("~{super");
 			result.setLeading(laf.getParagraphLeading(styletype));
-			while (ssidx_start != -1) {
+			while (s0sidx_start != -1) {
 				// parse superscript text
-				int ssidx_stop = chunkText.indexOf("}", ssidx_start);
+				int ssidx_stop = chunkText.indexOf("}", s0sidx_start);
 				if (ssidx_stop == -1) {
 					SasshiatoTrace
 							.logError("Malformed superscript instruction found in line:"
@@ -1087,9 +1087,9 @@ public class PdfPrinterUtil {
 					formatPartialLine(chunkText, result, laf, f, styletype);
 					return result;
 				} else {
-					String txt_before = chunkText.substring(0, ssidx_start);
+					String txt_before = chunkText.substring(0, s0sidx_start);
 					String txt_after = chunkText.substring(ssidx_stop + 1);
-					String superscript = chunkText.substring(ssidx_start
+					String superscript = chunkText.substring(s0sidx_start
 							+ "~{super".length(), ssidx_stop);
 					superscript = superscript.trim();
 					formatPartialLine(txt_before, result, laf, f, styletype);
@@ -1100,10 +1100,38 @@ public class PdfPrinterUtil {
 					result.add(superscript_chunk);
 					chunkText = txt_after;
 				}
-				ssidx_start = chunkText.toLowerCase().indexOf("~{super");
+                s0sidx_start = chunkText.toLowerCase().indexOf("~{super");
 			}
 
-			if (chunkText.length() > 0) {
+            int s1sidx_start = chunkText.toLowerCase().indexOf("~{sub");
+            result.setLeading(laf.getParagraphLeading(styletype));
+            while (s1sidx_start != -1) {
+                // parse superscript text
+                int ssidx_stop = chunkText.indexOf("}", s1sidx_start);
+                if (ssidx_stop == -1) {
+                    SasshiatoTrace
+                            .logError("Malformed superscript instruction found in line:"
+                                    + txt);
+                    formatPartialLine(chunkText, result, laf, f, styletype);
+                    return result;
+                } else {
+                    String txt_before = chunkText.substring(0, s1sidx_start);
+                    String txt_after = chunkText.substring(ssidx_stop + 1);
+                    String sxscript = chunkText.substring(s1sidx_start
+                            + "~{sub".length(), ssidx_stop);
+                    sxscript = sxscript.trim();
+                    formatPartialLine(txt_before, result, laf, f, styletype);
+                    Chunk superscript_chunk = new Chunk("" + sxscript, laf
+                            .getSuperscriptFont(styletype));
+                    float superscriptRaise = laf.getSuperscriptRaise(styletype);
+                    superscript_chunk.setTextRise(- superscriptRaise); // use negative superscript rise
+                    result.add(superscript_chunk);
+                    chunkText = txt_after;
+                }
+                s1sidx_start = chunkText.toLowerCase().indexOf("~{sub");
+            }
+
+            if (chunkText.length() > 0) {
 				formatPartialLine(chunkText, result, laf, f, styletype);
 			}
 			

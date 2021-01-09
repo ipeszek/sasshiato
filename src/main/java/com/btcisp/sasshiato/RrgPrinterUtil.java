@@ -476,7 +476,21 @@ public class RrgPrinterUtil {
 					break;
 				}
 			}
-			float cw0 =  laf.getBaseFont(styletype).getWidthPoint(txt,laf.getFontSize(styletype));
+
+          int susidx_start=txt.toLowerCase().indexOf("~{sub");
+          while(susidx_start!=-1){
+              int ssidx_stop = txt.indexOf("}", susidx_start);
+              if(ssidx_stop!=-1){
+                  String superscript = txt.substring(susidx_start + "~{sub".length(), ssidx_stop);
+                  superscript = superscript.trim();
+                  txt = txt.substring(0, susidx_start) + "X" + txt.substring(ssidx_stop +1);
+                  susidx_start=txt.toLowerCase().indexOf("~{sub");
+              } else {
+                  break;
+              }
+          }
+
+          float cw0 =  laf.getBaseFont(styletype).getWidthPoint(txt,laf.getFontSize(styletype));
 			//if(!oldtxt.equals(txt)){
 			//	System.out.println("Measurement change:");
 			//	System.out.println(oldtxt);
@@ -495,7 +509,10 @@ public class RrgPrinterUtil {
 			  } else if (c=='~' && txt.indexOf("~{super", position-1) == position){
 				  isEscaped = true;
 				  escapeEndChar = '}';
-			  }
+              } else if (c=='~' && txt.indexOf("~{sub", position-1) == position){
+                  isEscaped = true;
+                  escapeEndChar = '}';
+              }
 			  return isEscaped;
 		  } else {
 			  if(c==escapeEndChar){
