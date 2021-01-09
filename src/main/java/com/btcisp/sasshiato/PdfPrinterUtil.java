@@ -1093,7 +1093,7 @@ public class PdfPrinterUtil {
 							+ "~{super".length(), ssidx_stop);
 					superscript = superscript.trim();
 					formatPartialLine(txt_before, result, laf, f, styletype);
-					Chunk superscript_chunk = new Chunk(" " + superscript, laf
+					Chunk superscript_chunk = new Chunk("" + superscript, laf
 							.getSuperscriptFont(styletype));
 					float superscriptRaise = laf.getSuperscriptRaise(styletype);
 					superscript_chunk.setTextRise(superscriptRaise);
