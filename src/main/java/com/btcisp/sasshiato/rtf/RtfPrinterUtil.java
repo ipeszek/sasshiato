@@ -964,7 +964,7 @@ public class RtfPrinterUtil {
 				int cellBorders = row.getColumnBorderInstructions(j);
 				String inst = convUtil.convertBorderInstructions(border, cellBorders);
 				if(!StringUtil.areEqual(inst, border)){
-					rformat.setBorder(j, inst);
+					rformat.setBorder(i, inst); //rformat is per page use i not global j
 				}
 			}
 		}
