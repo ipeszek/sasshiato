@@ -481,6 +481,12 @@ public class RtfPrinterUtil {
 		if (ssidx_start != -1) {
 			txt = txt.replace("~{super", "{\\super");
 		}
+        int susidx_start = plainText.toLowerCase().indexOf("~{sub");
+
+        if (susidx_start != -1) {
+            txt = txt.replace("~{sub", "{\\sub");
+        }
+        
 		StringBuffer newtxt = new StringBuffer();
 		StyledChunk[] chunks = txt.getChunks();
 		for (int i = 0; i < chunks.length; i++) {
@@ -964,7 +970,7 @@ public class RtfPrinterUtil {
 				int cellBorders = row.getColumnBorderInstructions(j);
 				String inst = convUtil.convertBorderInstructions(border, cellBorders);
 				if(!StringUtil.areEqual(inst, border)){
-					rformat.setBorder(j, inst);
+					rformat.setBorder(i, inst); //rformat is per page use i not global j
 				}
 			}
 		}

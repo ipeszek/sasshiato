@@ -89,7 +89,23 @@ public class StyledTextSizingUtil {
 		}
 		return res;
 	}
- 	
+
+    private String replaceSubScript(String s){
+        if(s == null) return s;
+        String res = s;
+        int inx = res.indexOf("~{sub ");
+        if(inx > -1) {
+            int toInx = res.indexOf('}', inx);
+            if(toInx > -1){
+                res = res.substring(0, inx) + StringUtil.fill('x', toInx -inx)  + res.substring(toInx + 1);
+            }
+            if(res.indexOf("~{sub ") > -1){
+                res = replaceSuperScript(res);
+            }
+        }
+        return res;
+    }
+    
      //adds ' ' in the position that PDF would break line (unless '-' is encountered right after
      public StyledText adjustForRtfLineBreaks(float maxSize, StyledText line, String styleType, ReportLaF laf){
     	 float size = calcLineSize(line, styleType, laf);
@@ -98,16 +114,17 @@ public class StyledTextSizingUtil {
     		 return line;
     	 } else {
 		    String pureText = line.getText();
-		    String pureTextWithSuperscriptReplaced = replaceSuperScript(pureText);
+		    String pureTextWithXcriptReplaced0 = replaceSuperScript(pureText);
+		    String pureTextWithXcriptReplaced = replaceSubScript(pureTextWithXcriptReplaced0);
 		    String allSplits = laf.getSplitChars();
 		    if(allSplits.indexOf(' ') == -1){
 		    	allSplits = allSplits + " ";
 		    }
   	    	ArrayList<Integer> possiblePdfOnlySplitPositions = new ArrayList<Integer>();
-			int inx = StringUtil.indexOfAnyOfChars(pureTextWithSuperscriptReplaced, -1, allSplits);
+			int inx = StringUtil.indexOfAnyOfChars(pureTextWithXcriptReplaced, -1, allSplits);
 			while(inx != -1){
   				possiblePdfOnlySplitPositions.add(inx + 1);
-				inx = StringUtil.indexOfAnyOfChars(pureTextWithSuperscriptReplaced, inx+1, allSplits);				
+				inx = StringUtil.indexOfAnyOfChars(pureTextWithXcriptReplaced, inx+1, allSplits);				
 			}
 			if(possiblePdfOnlySplitPositions.size() == 0){
 				return line; //PDF will break only on spaces
