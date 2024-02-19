@@ -78,3 +78,6 @@ rtfpl_shead=hf is also supported.
 
 
 14. In sizing calculations like LH only last header record is used.
+
+
+15. (2024/02/18) using special characters e.g. /#0041 before line break // may not work. 
